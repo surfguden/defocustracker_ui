@@ -1,0 +1,2 @@
+The following images are aquired with 500nm particles
+The step height for the z stack is 2um 
