@@ -64,7 +64,9 @@ stack_length = length(cal.images); % total number of stack images
 % guess xy-position and calculate global similarity maps from a
 % reduced set of stack images
 x1 = []; y1 = []; c1 = [];
-im=gpuArray(im);
+if canUseGPU()==1
+    im=gpuArray(im);
+end
 
 % find index of reduced number of stack images used in the first step
 if length(par.images_in_guess_step)==1 
@@ -90,7 +92,10 @@ end
 flag_out = x1<2+size_t(2)/2 | x1>size(im,2)-size_t(2)/2-1 |...
     y1<2+size_t(1)/2 | y1>size(im,1)-size_t(1)/2-1;
 x1(flag_out) = []; y1(flag_out) = []; c1(flag_out) = [];
-im=gather(im);
+if canUseGPU()==1
+    im=gather(im);
+end
+
 %% STEP 2 - GUESSING STEP - find a first guess of z position from the reduced
 x2 = []; y2 = []; z2 = []; c2 = []; ts2 = [];
 
