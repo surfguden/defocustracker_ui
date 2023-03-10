@@ -19,7 +19,8 @@ end
 function im = give_image_raw(this,n)
 switch this.im_type
     case 'preloaded_imageset' %added functionality for preloaded images
-        im=this.images{n};
+        im=this.preloaded_images{n};
+        
     case 'DAVIS single'
         im0 = readimx(fullfile(this.path,this.images{n}));
         im = im0.Frames{1}.Components{1}.Planes{1}';

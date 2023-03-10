@@ -15,10 +15,11 @@ if nargin == 0
         im_path = [];
     end
 elseif nargin == 1
-    im_type = 'preloaded_imageset';
-    im_name=varargin{1};
+    im_type = 'preloaded_imageset';    
+    im_name=[];
     im_path = [];
     n_frames = numel(varargin{1});
+    im_set.preloaded_images= varargin{1};
 elseif nargin == 2
     im_path = varargin{1};
     im_name = varargin{2};
