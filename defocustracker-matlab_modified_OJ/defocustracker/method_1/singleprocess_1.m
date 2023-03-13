@@ -64,7 +64,7 @@ stack_length = length(cal.images); % total number of stack images
 % guess xy-position and calculate global similarity maps from a
 % reduced set of stack images
 x1 = []; y1 = []; c1 = [];
-if canUseGPU()==1
+try
     im=gpuArray(im);
 end
 
@@ -92,7 +92,7 @@ end
 flag_out = x1<2+size_t(2)/2 | x1>size(im,2)-size_t(2)/2-1 |...
     y1<2+size_t(1)/2 | y1>size(im,1)-size_t(1)/2-1;
 x1(flag_out) = []; y1(flag_out) = []; c1(flag_out) = [];
-if canUseGPU()==1
+try 
     im=gather(im);
 end
 
